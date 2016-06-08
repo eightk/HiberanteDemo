@@ -6,6 +6,7 @@
 package com.demo.hibernate;
 
 import com.demo.dto.UserDetails;
+import java.util.Date;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -18,8 +19,9 @@ public class HibernateTest {
     
     public static void main(String[] args) {
         UserDetails user = new UserDetails();
-        user.setUseId(1);
-        user.setUserName("1st User");
+        user.setUseId(5);
+        user.setUserName("5th User");
+        user.setBirthDate(new Date());
         
         //use Hibernate API to save the model object
         /*Configuration configuration = new Configuration();

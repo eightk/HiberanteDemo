@@ -1,8 +1,13 @@
 package com.demo.dto;
 
+import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -33,8 +38,23 @@ public class UserDetails {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
     
     @Id
     private int useId;
+    //Transient annotation will let hibernate fully ignore this column
+    @Transient
+    @Column(name="USER_NAME", nullable=false)
     private String userName;
+    
+    @Temporal(TemporalType.DATE)
+    @Column(name="BIRTHDATE")
+    private Date birthDate;
 }
