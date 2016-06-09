@@ -30,6 +30,9 @@
         <property name="hbm2ddl.auto">create</property>
     
         <!-- Names and annotated entity class -->
-        <mapping class="com.demo.dto.UserDetails"/>
+        <mapping class="com.demo.dto.UserDetail"/>
+        <mapping class="com.demo.dto.Factory"/>
+        <mapping class="com.demo.dto.Product"/>
+        <mapping class="com.demo.dto.ProductDetail"/>
     </session-factory>
 </hibernate-configuration>

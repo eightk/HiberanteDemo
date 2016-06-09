@@ -16,7 +16,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
  *
  * @author huico
  */
-public class HibernateTest {
+public class HibernateTest_1 {
     
     public static void main(String[] args) {
         Product product = new Product();
@@ -28,10 +28,15 @@ public class HibernateTest {
         product.setName("P1");
         product2.setName("P2");
         factory.setFactoryAddress("some place");
-        productDetail.setFactory(factory);
+        
         productDetail.setProduct(product);
-        productDetail2.setFactory(factory);
+        productDetail.setFactory(factory);
         productDetail2.setProduct(product2);
+        productDetail2.setFactory(factory);
+        
+        factory.getProductDetails().add(productDetail);
+        factory.getProductDetails().add(productDetail2);
+        
         
         //since we have mapping between the objects, we only need to save the child objects and the parent objects will be automatically saved.
         //use Hibernate API to save the model object
@@ -41,8 +46,7 @@ public class HibernateTest {
         SessionFactory sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.save(productDetail);
-        session.save(productDetail2);
+        session.save(factory);
         session.getTransaction().commit();
         session.close();
         sessionFactory.close();

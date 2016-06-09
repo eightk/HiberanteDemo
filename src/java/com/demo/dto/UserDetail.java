@@ -3,6 +3,8 @@ package com.demo.dto;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -20,8 +22,8 @@ import javax.persistence.Transient;
  * @author huico
  */
 @Entity
-@Table(name="USER_DETAILS")
-public class UserDetails {
+@Table(name="USER_DETAIL")
+public class UserDetail {
     
     public int getUseId() {
         return useId;
@@ -48,6 +50,7 @@ public class UserDetails {
     }
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int useId;
     //Transient annotation will let hibernate fully ignore this column
     @Transient
